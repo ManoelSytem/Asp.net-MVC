@@ -1,0 +1,60 @@
+﻿@model BLL.Aluno
+
+@Html.Partial("_top"); <!--Shared topo -->
+
+    <!--  Container Principal -->
+    <div id="main" class="container-fluid">
+        <h3 class="page-header">Cadastro de Cliente</h3>
+@using (Html.BeginForm())
+{
+    <form>
+        <!-- area de campos do form -->
+
+        <div class="row">
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "form-group col-md-4" })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-group col-md-4" })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "form-group col-md-4" })
+                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="campo3">Sexo</label><br />
+                @Html.DropDownList("Sexo", new List<SelectListItem>
+                    {
+                       new SelectListItem { Text = "Masculino",  Value="M"},
+                       new SelectListItem { Text = "Feminino",  Value="F"}
+                    }, "Selecione o Sexo", new { htmlAttributes = new { @class = "form-group col-md-4" } })
+                @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+            </div>
+
+
+
+        </div>
+        <hr />
+        <!-- area de ações -->
+        <div id="actions" class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a href="@Url.Action("Index","Home")" class="btn btn-default">Cancelar</a>
+            </div>
+        </div>
+    </form>
+}
+    </div>
+
+</body>
+</html>
+
